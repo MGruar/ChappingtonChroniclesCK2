@@ -1,0 +1,20 @@
+#CODE;ENGLISH;;;;;;;;;;;;;x
+
+EVTNAME_CHAPCHRON_0;Open Rebellion in Iberia;;;;;;;;;;;;;x
+EVTDESC_CHAPCHRON_0;A heretical revolt is underway in [Root.GetName]. The fools are rising up against our churches, declaring us to be heathens. They want to bring the Pope and his corruption back into our great empire! Worse still, it looks like a member of the Chappington dynasty is behind the revolt!;;;;;;;;;;;;;x
+EVTOPTA_CHAPCHRON_0;This must be stopped!;;;;;;;;;;;;;x
+EVTNAME_CHAPCHRON_1;Another Rebellion in Iberia;;;;;;;;;;;;;x
+EVTDESC_CHAPCHRON_1;Yet another heretical revolt is underway, this time in [Root.GetName]. Another member of the Chappington dynasty is behind the revolt - yet the Pope must be the true mastermind.;;;;;;;;;;;;;x
+EVTOPTA_CHAPCHRON_1;Treason!;;;;;;;;;;;;;x
+EVTNAME_CHAPCHRON_2;Rebellion in Angsaxland;;;;;;;;;;;;;x
+EVTDESC_CHAPCHRON_2;Rebellion continues, this time in in [Root.GetName]. Clearly there is a rift within the Chappington dynasty - some have seized upon religious differences in order to take power for themselves.;;;;;;;;;;;;;x
+EVTOPTA_CHAPCHRON_2;Traitors!;;;;;;;;;;;;;x
+EVTNAME_CHAPCHRON_3;Another Rebellion in Angsaxland;;;;;;;;;;;;;x
+EVTDESC_CHAPCHRON_3;Rebellion has now expanded to [Root.GetName]. The Chappington dynasty is full of treachery!;;;;;;;;;;;;;x
+EVTOPTA_CHAPCHRON_3;It is time for a purge!;;;;;;;;;;;;;x
+EVTNAME_CHAPCHRON_4;Rebels at Home;;;;;;;;;;;;;x
+EVTDESC_CHAPCHRON_4;There are rebels on our doorstep in [Root.GetName]! While they may not be Chappingtons, this level of heresy in Muirland itself cannot be tolerated.;;;;;;;;;;;;;x
+EVTOPTA_CHAPCHRON_4;When will it end?;;;;;;;;;;;;;x
+EVTNAME_CHAPCHRON_5;Rebellion Spreads to Lapland;;;;;;;;;;;;;x
+EVTDESC_CHAPCHRON_5;Rebellion has touched every corner of the empire, now appearing in [Root.GetName]. With any luck, this should be the last of them.;;;;;;;;;;;;;x
+EVTOPTA_CHAPCHRON_5;One final push!;;;;;;;;;;;;;x

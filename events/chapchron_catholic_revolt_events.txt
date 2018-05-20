@@ -1,0 +1,551 @@
+# Events for the 14th century Catholic rebellions (and related events)
+# Reserved ChapChron 0-99
+
+namespace = ChapChron
+
+# The Iberian Revolt Part 1
+province_event = {
+	id = ChapChron.0
+	title = EVTNAME_CHAPCHRON_0
+	desc = EVTDESC_CHAPCHRON_0
+	
+	picture = GFX_evt_heretic
+	border = GFX_event_normal_frame_war
+	
+	trigger = {
+		year = 1315
+		province_id = 157 # Santiago
+		NOT = {
+			has_global_flag = chapchron_c14_iberia_1
+		}
+	}
+	
+	immediate = {
+		set_global_flag = chapchron_c14_iberia_1
+		# Find a Catholic Chappington, create a revolt here
+		ROOT = {
+			owner = {
+				top_liege = {
+					random_dynasty_member = {
+						limit = {
+							religion = catholic
+							culture = scottish
+						}
+						
+						set_character_flag = religious_revolter
+						
+						create_title = {
+							tier = DUKE
+							landless = yes
+							temporary = yes
+							rebel = yes
+							culture = ROOT
+							name = "HERETIC_REVOLT"
+							holder = THIS
+						}
+						
+						wealth = 1000
+						
+						spawn_unit = {
+							province = ROOT
+							home = ROOT
+							owner = THIS
+							#leader = THIS
+							match_character = PREV
+							match_mult = 0.25
+							match_min = 1000
+							match_max = 50000
+							attrition = 0.25
+						}
+						
+						# DoW on the province top liege
+						war = {
+							target = PREV
+							casus_belli = religious_revolt
+							thirdparty_title = ROOT # The county...
+							tier = DUKE # ... but really the de jure duchy
+						}
+						opinion = {
+							who = PREV
+							modifier = opinion_evil_tyrant
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 720
+	}
+	
+	option = {
+		name = EVTOPTA_CHAPCHRON_0
+	}
+}
+
+# The Iberian Revolt Part 2
+province_event = {
+	id = ChapChron.1
+	title = EVTNAME_CHAPCHRON_1
+	desc = EVTDESC_CHAPCHRON_1
+	
+	picture = GFX_evt_heretic
+	border = GFX_event_normal_frame_war
+	
+	trigger = {
+		year = 1315
+		region = world_europe_west_iberia
+		religion = catholic
+		NOT = {
+			has_global_flag = chapchron_c14_iberia_2
+			province_id = 157 # Santiago
+			duchy = {
+				any_province = {
+					province_id = 157 # Santiago
+				}
+			}
+		}
+		has_global_flag = chapchron_c14_iberia_1
+	}
+	
+	immediate = {
+		set_global_flag = chapchron_c14_iberia_2
+		# Find another Catholic Chappington, create a revolt here
+		ROOT = {
+			owner = {
+				top_liege = {
+					random_dynasty_member = {
+						limit = {
+							religion = catholic
+							culture = scottish
+							NOT = {
+								has_character_flag = religious_revolter
+							}
+						}
+						
+						set_character_flag = religious_revolter
+						
+						create_title = {
+							tier = DUKE
+							landless = yes
+							temporary = yes
+							rebel = yes
+							culture = ROOT
+							name = "HERETIC_REVOLT"
+							holder = THIS
+						}
+						
+						wealth = 1000
+						
+						spawn_unit = {
+							province = ROOT
+							home = ROOT
+							owner = THIS
+							#leader = THIS
+							match_character = PREV
+							match_mult = 0.35
+							match_min = 1000
+							match_max = 50000
+							attrition = 0.25
+						}
+						
+						# DoW on the province top liege
+						war = {
+							target = PREV
+							casus_belli = religious_revolt
+							thirdparty_title = ROOT # The county...
+							tier = DUKE # ... but really the de jure duchy
+						}
+						opinion = {
+							who = PREV
+							modifier = opinion_evil_tyrant
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 6
+	}
+	
+	option = {
+		name = EVTOPTA_CHAPCHRON_1
+	}
+}
+
+# Angsaxon Revolt Part 1
+province_event = {
+	id = ChapChron.2
+	title = EVTNAME_CHAPCHRON_2
+	desc = EVTDESC_CHAPCHRON_2
+	
+	picture = GFX_evt_heretic
+	border = GFX_event_normal_frame_war
+	
+	trigger = {
+		year = 1315
+		region = world_europe_west_brittania
+		religion = catholic
+		culture = saxon
+		NOT = {
+			has_global_flag = chapchron_c14_angsax_1
+		}
+		has_global_flag = chapchron_c14_iberia_2
+	}
+	
+	immediate = {
+		set_global_flag = chapchron_c14_angsax_1
+		set_province_flag = chapchron_c14_angsax_1
+		# Find another Catholic Chappington, this time angsax, and create a revolt here
+		ROOT = {
+			owner = {
+				top_liege = {
+					random_dynasty_member = {
+						limit = {
+							religion = catholic
+							culture = saxon
+							NOT = {
+								has_character_flag = religious_revolter
+							}
+						}
+						
+						set_character_flag = religious_revolter
+						
+						create_title = {
+							tier = DUKE
+							landless = yes
+							temporary = yes
+							rebel = yes
+							culture = ROOT
+							name = "HERETIC_REVOLT"
+							holder = THIS
+						}
+						
+						wealth = 1000
+						
+						spawn_unit = {
+							province = ROOT
+							home = ROOT
+							owner = THIS
+							#leader = THIS
+							match_character = PREV
+							match_mult = 0.35
+							match_min = 1000
+							match_max = 50000
+							attrition = 0.25
+						}
+						
+						# DoW on the province top liege
+						war = {
+							target = PREV
+							casus_belli = religious_revolt
+							thirdparty_title = ROOT # The county...
+							tier = DUKE # ... but really the de jure duchy
+						}
+						opinion = {
+							who = PREV
+							modifier = opinion_evil_tyrant
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 6
+	}
+	
+	option = {
+		name = EVTOPTA_CHAPCHRON_2
+	}
+}
+
+# Angsaxon Revolt Part 2
+province_event = {
+	id = ChapChron.3
+	title = EVTNAME_CHAPCHRON_3
+	desc = EVTDESC_CHAPCHRON_3
+	
+	picture = GFX_evt_heretic
+	border = GFX_event_normal_frame_war
+	
+	trigger = {
+		year = 1315
+		region = world_europe_west_brittania
+		religion = catholic
+		culture = saxon
+		NOT = {
+			has_global_flag = chapchron_c14_angsax_2
+			has_province_flag = chapchron_c14_angsax_1
+			duchy = {
+				any_province = {
+					has_province_flag = chapchron_c14_angsax_1
+				}
+			}
+		}
+		has_global_flag = chapchron_c14_angsax_1
+	}
+	
+	immediate = {
+		set_global_flag = chapchron_c14_angsax_2
+		set_province_flag = chapchron_c14_angsax_2
+		# Find another Catholic Chappington, also angsax, and create a revolt here
+		ROOT = {
+			owner = {
+				top_liege = {
+					random_dynasty_member = {
+						limit = {
+							religion = catholic
+							culture = saxon
+							NOT = {
+								has_character_flag = religious_revolter
+							}
+						}
+						
+						set_character_flag = religious_revolter
+						
+						create_title = {
+							tier = DUKE
+							landless = yes
+							temporary = yes
+							rebel = yes
+							culture = ROOT
+							name = "HERETIC_REVOLT"
+							holder = THIS
+						}
+						
+						wealth = 1000
+						
+						spawn_unit = {
+							province = ROOT
+							home = ROOT
+							owner = THIS
+							#leader = THIS
+							match_character = PREV
+							match_mult = 0.25
+							match_min = 1000
+							match_max = 50000
+							attrition = 0.25
+						}
+						
+						# DoW on the province top liege
+						war = {
+							target = PREV
+							casus_belli = religious_revolt
+							thirdparty_title = ROOT # The county...
+							tier = DUKE # ... but really the de jure duchy
+						}
+						opinion = {
+							who = PREV
+							modifier = opinion_evil_tyrant
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 6
+	}
+	
+	option = {
+		name = EVTOPTA_CHAPCHRON_3
+	}
+}
+
+# The Highlander Revolt
+province_event = {
+	id = ChapChron.4
+	title = EVTNAME_CHAPCHRON_4
+	desc = EVTDESC_CHAPCHRON_4
+	
+	picture = GFX_evt_heretic
+	border = GFX_event_normal_frame_war
+	
+	trigger = {
+		year = 1315
+		region = world_europe_west_brittania
+		religion = catholic
+		culture = scottish
+		NOT = {
+			has_global_flag = chapchron_c14_highland
+		}
+		has_global_flag = chapchron_c14_angsax_1
+	}
+	
+	immediate = {
+		set_global_flag = chapchron_c14_highland
+		# Create a new character for the revolt.
+		create_character = {
+			random_traits = yes
+			dynasty = none
+			religion = ROOT
+			culture = ROOT
+			female = no
+			age = 32
+			attributes = {
+				martial = 7
+				learning = 7
+			}
+			trait = zealous
+			trait = scholar
+			trait = skilled_tactician
+		}
+		
+		new_character = {
+			set_character_flag = religious_revolter
+			
+			create_title = {
+				tier = DUKE
+				landless = yes
+				temporary = yes
+				rebel = yes
+				culture = ROOT
+				name = "HERETIC_REVOLT"
+				holder = THIS
+			}
+			
+			wealth = 1000
+			
+			# DoW on the province top liege
+			ROOT = {
+				owner = {
+					top_liege = {
+						reverse_war = {
+							target = PREVPREVPREV
+							casus_belli = religious_revolt
+							thirdparty_title = ROOT # The county...
+							tier = DUKE # ... but really the de jure duchy
+						}
+						reverse_opinion = {
+							who = PREVPREVPREV
+							modifier = opinion_evil_tyrant
+						}
+						spawn_unit = {
+							province = ROOT
+							home = ROOT
+							owner = PREVPREVPREV
+							#leader = PREVPREVPREV
+							match_character = THIS
+							match_mult = 0.35
+							match_min = 1000
+							match_max = 50000
+							attrition = 0.25
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 6
+	}
+	
+	option = {
+		name = EVTOPTA_CHAPCHRON_4
+	}
+}
+
+# Lappish Revolt
+province_event = {
+	id = ChapChron.5
+	title = EVTNAME_CHAPCHRON_5
+	desc = EVTDESC_CHAPCHRON_5
+	
+	picture = GFX_evt_heretic
+	border = GFX_event_normal_frame_war
+	
+	trigger = {
+		year = 1315
+		religion = catholic
+		culture_group = finno_ugric
+		owner = {
+			top_liege = {
+				religion = cathar
+			}
+		}
+		NOT = {
+			has_global_flag = chapchron_c14_lapland
+		}
+		has_global_flag = chapchron_c14_angsax_1
+	}
+	
+	immediate = {
+		set_global_flag = chapchron_c14_lapland
+		# Create a new character for the revolt.
+		create_character = {
+			random_traits = yes
+			dynasty = none
+			religion = ROOT
+			culture = ROOT
+			female = no
+			age = 32
+			attributes = {
+				martial = 7
+				learning = 7
+			}
+			trait = zealous
+			trait = scholar
+			trait = skilled_tactician
+		}
+		
+		new_character = {
+			set_character_flag = religious_revolter
+			
+			create_title = {
+				tier = DUKE
+				landless = yes
+				temporary = yes
+				rebel = yes
+				culture = ROOT
+				name = "HERETIC_REVOLT"
+				holder = THIS
+			}
+			
+			wealth = 1000
+			
+			# DoW on the province top liege
+			ROOT = {
+				owner = {
+					top_liege = {
+						reverse_war = {
+							target = PREVPREVPREV
+							casus_belli = religious_revolt
+							thirdparty_title = ROOT # The county...
+							tier = DUKE # ... but really the de jure duchy
+						}
+						reverse_opinion = {
+							who = PREVPREVPREV
+							modifier = opinion_evil_tyrant
+						}
+						spawn_unit = {
+							province = ROOT
+							home = ROOT
+							owner = PREVPREVPREV
+							#leader = PREVPREVPREV
+							match_character = THIS
+							match_mult = 0.45
+							match_min = 1000
+							match_max = 50000
+							attrition = 0.25
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 6
+	}
+	
+	option = {
+		name = EVTOPTA_CHAPCHRON_5
+	}
+}
