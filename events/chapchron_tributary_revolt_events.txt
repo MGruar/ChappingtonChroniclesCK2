@@ -1,0 +1,55 @@
+# Events for the 15th century tributary rebellions (and related events)
+# Reserved ChapChron 100-199
+
+namespace = ChapChron
+
+character_event = {
+	id = ChapChron.100
+	title = EVTNAME_CHAPCHRON_100
+	desc = EVTDESC_CHAPCHRON_100
+	
+	picture = 
+	border = GFX_event_normal_frame_war
+	
+	major = yes
+	major_trigger = {
+		ai = no
+	}
+	
+	only_playable = yes
+	
+	trigger = {
+		year = 1410
+		NOT = {
+			has_character_flag = chapchron_c15
+		}
+		is_tributary = yes
+		suzerain = {
+			has_landed_title = e_britannia
+		}
+	}
+	
+	immediate = {
+		set_character_flag = chapchron_c15
+		ROOT = {
+			suzerain = {
+				reverse_war = {
+					target = PREV
+					casus_belli = free_tributary_cb
+				}
+				opinion = {
+					who = PREV
+					modifier = opinion_evil_tyrant
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 60
+	}
+	
+	option = {
+		name = EVTOPTA_CHAPCHRON_100
+	}
+}
