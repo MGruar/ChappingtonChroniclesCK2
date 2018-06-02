@@ -1,14 +1,15 @@
-# Events for the 15th century tributary rebellions (and related events)
+# Events for the 15th century rebellions (and related events)
 # Reserved ChapChron 100-199
 
 namespace = ChapChron
 
+# Tributary Rebellions
 character_event = {
 	id = ChapChron.100
 	title = EVTNAME_CHAPCHRON_100
 	desc = EVTDESC_CHAPCHRON_100
 	
-	picture = 
+	picture = GFX_evt_peasants
 	border = GFX_event_normal_frame_war
 	
 	major = yes
@@ -21,16 +22,19 @@ character_event = {
 	trigger = {
 		year = 1410
 		NOT = {
-			has_character_flag = chapchron_c15
+			has_character_flag = chapchron_c15 # legacy compatability
+			has_character_flag = chapchron_c15_tributary_rebellion
+			year = 1440
 		}
 		is_tributary = yes
 		suzerain = {
 			has_landed_title = e_britannia
 		}
+		is_incapable = no
 	}
 	
 	immediate = {
-		set_character_flag = chapchron_c15
+		set_character_flag = chapchron_c15_tributary_rebellion
 		ROOT = {
 			suzerain = {
 				reverse_war = {
@@ -43,6 +47,20 @@ character_event = {
 				}
 			}
 		}
+		# Spawn more troops
+		spawn_unit = {
+			province = THIS
+			home = THIS
+			owner = THIS
+			#leader = THIS
+			troops = {
+				archers = { 5000 5000 }
+				light_infantry = { 15000 15000 }
+				heavy_infantry = { 3000 3000 }
+				light_cavalry = { 2000 2000 }
+			}
+			attrition = 0.25
+		}
 	}
 	
 	mean_time_to_happen = {
@@ -51,5 +69,300 @@ character_event = {
 	
 	option = {
 		name = EVTOPTA_CHAPCHRON_100
+	}
+}
+
+# Nationalist Uprising 1
+province_event = {
+	id = ChapChron.101
+	title = EVTNAME_CHAPCHRON_101
+	desc = EVTDESC_CHAPCHRON_101
+	
+	picture = GFX_evt_peasants
+	border = GFX_event_normal_frame_war
+	
+	major = yes
+	major_trigger = {
+		ai = no
+	}
+	
+	trigger = {
+		year = 1415
+		NOT = {
+			has_global_flag = chapchron_c15_nationalist_uprising
+			year = 1440
+			culture_group = celtic
+		}
+		owner = {
+			top_liege = {
+				has_landed_title = e_britannia
+			}
+		}
+	}
+	
+	immediate = {
+		set_global_flag = chapchron_c15_nationalist_uprising
+		
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = ROOT
+			culture = ROOT
+			female = no
+			age = 20
+			health = 7
+			fertility = 0.7
+			attributes = {
+				martial = 8
+				diplomacy = 9
+			}
+			trait = just
+			trait = brave
+			trait = gregarious
+			trait = ambitious
+			trait = brilliant_strategist
+			trait = inspiring_leader
+		}
+		
+		new_character = {
+			set_character_flag = nationalist_rebel
+			
+			create_title = {
+				tier = DUKE
+				landless = yes
+				temporary = yes
+				rebel = yes
+				culture = ROOT
+				name = "NATIONALIST_REVOLT"
+				holder = THIS
+			}
+			
+			wealth = 1000
+			
+			# DoW on the province top liege
+			ROOT = {
+				owner = {
+					top_liege = {
+						reverse_war = {
+							target = PREVPREVPREV
+							casus_belli = chapchron_nationalist_revolt
+							thirdparty_title = ROOT # The county...
+							tier = KING # ... but really the de jure kingdom
+						}
+						reverse_opinion = {
+							who = PREVPREVPREV
+							modifier = opinion_evil_tyrant
+						}
+						spawn_unit = {
+							province = ROOT
+							home = ROOT
+							owner = PREVPREVPREV
+							#leader = PREVPREVPREV
+							match_character = THIS
+							match_mult = 0.80
+							match_min = 1000
+							match_max = 80000
+							attrition = 0.25
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 48
+	}
+	
+	option = {
+		name = EVTOPTA_CHAPCHRON_101
+	}
+}
+
+# Independence Rebellions
+character_event = {
+	id = ChapChron.102
+	title = EVTNAME_CHAPCHRON_102
+	desc = EVTDESC_CHAPCHRON_102
+	
+	picture = GFX_evt_peasants
+	border = GFX_event_normal_frame_war
+	
+	major = yes
+	major_trigger = {
+		ai = no
+	}
+	
+	only_playable = yes
+	
+	trigger = {
+		year = 1420
+		NOT = {
+			has_character_flag = chapchron_c15_independence_rebellion
+			year = 1440
+		}
+		liege = {
+			has_landed_title = e_britannia
+			# No Chappingtons
+			NOT = {
+				dynasty = ROOT
+			}
+		}
+		tier = KING
+		is_incapable = no
+		prisoner = no
+	}
+	
+	immediate = {
+		set_character_flag = chapchron_c15_independence_rebellion
+		ROOT = {
+			liege = {
+				reverse_war = {
+					target = PREV
+					casus_belli = bid_for_independence
+				}
+				opinion = {
+					who = PREV
+					modifier = opinion_evil_tyrant
+				}
+			}
+		}
+		# Spawn more troops
+		spawn_unit = {
+			province = THIS
+			home = THIS
+			owner = THIS
+			#leader = THIS
+			troops = {
+				archers = { 5000 5000 }
+				light_infantry = { 15000 15000 }
+				heavy_infantry = { 3000 3000 }
+				light_cavalry = { 2000 2000 }
+			}
+			attrition = 0.25
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 48
+		# Half if culture is not celtic or angsax
+		modifier = {
+			factor = 0.5
+			NOT = {
+				culture_group = celtic
+				culture = saxon
+			}
+		}
+	}
+	
+	option = {
+		name = EVTOPTA_CHAPCHRON_102
+	}
+}
+
+# Nationalist Uprising 2
+province_event = {
+	id = ChapChron.103
+	title = EVTNAME_CHAPCHRON_103
+	desc = EVTDESC_CHAPCHRON_103
+	
+	picture = GFX_evt_peasants
+	border = GFX_event_normal_frame_war
+	
+	major = yes
+	major_trigger = {
+		ai = no
+	}
+	
+	trigger = {
+		year = 1425
+		NOT = {
+			has_global_flag = chapchron_c15_nationalist_uprising_2
+			year = 1440
+			culture_group = celtic
+		}
+		owner = {
+			top_liege = {
+				has_landed_title = e_britannia
+			}
+		}
+	}
+	
+	immediate = {
+		set_global_flag = chapchron_c15_nationalist_uprising_2
+		
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = ROOT
+			culture = ROOT
+			female = no
+			age = 20
+			health = 7
+			fertility = 0.7
+			attributes = {
+				martial = 8
+				diplomacy = 9
+			}
+			trait = just
+			trait = brave
+			trait = gregarious
+			trait = ambitious
+			trait = brilliant_strategist
+			trait = inspiring_leader
+		}
+		
+		new_character = {
+			set_character_flag = nationalist_rebel
+			
+			create_title = {
+				tier = DUKE
+				landless = yes
+				temporary = yes
+				rebel = yes
+				culture = ROOT
+				name = "NATIONALIST_REVOLT"
+				holder = THIS
+			}
+			
+			wealth = 1000
+			
+			# DoW on the province top liege
+			ROOT = {
+				owner = {
+					top_liege = {
+						reverse_war = {
+							target = PREVPREVPREV
+							casus_belli = chapchron_nationalist_revolt
+							thirdparty_title = ROOT # The county...
+							tier = KING # ... but really the de jure kingdom
+						}
+						reverse_opinion = {
+							who = PREVPREVPREV
+							modifier = opinion_evil_tyrant
+						}
+						spawn_unit = {
+							province = ROOT
+							home = ROOT
+							owner = PREVPREVPREV
+							#leader = PREVPREVPREV
+							match_character = THIS
+							match_mult = 1.00
+							match_min = 1000
+							match_max = 100000
+							attrition = 0.25
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 48
+	}
+	
+	option = {
+		name = EVTOPTA_CHAPCHRON_103
 	}
 }

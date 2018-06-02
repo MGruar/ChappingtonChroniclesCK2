@@ -1,5 +1,16 @@
 #CODE;ENGLISH;;;;;;;;;;;;;x
 
-EVTNAME_CHAPCHRON_100;Tributary Revolt;;;;;;;;;;;;;x
+EVTNAME_CHAPCHRON_100;Tributary Rebellion;;;;;;;;;;;;;x
 EVTDESC_CHAPCHRON_100;Our tributary [Root.GetName] has decided to end their tributary relationship with us. We did not agree with this decision.;;;;;;;;;;;x
 EVTOPTA_CHAPCHRON_100;Ready the troops!;;;;;;;;;;;;;x
+EVTNAME_CHAPCHRON_101;Nationalist Uprising;;;;;;;;;;;;;x
+EVTDESC_CHAPCHRON_101;Peasants in [Root.GetName] have risen up, deciding they want to create a new independent "nation". What a load of hogwash.;;;;;;;;;;;x
+EVTOPTA_CHAPCHRON_101;Ready the troops!;;;;;;;;;;;;;x
+EVTNAME_CHAPCHRON_102;Independence Rebellion;;;;;;;;;;;;;x
+EVTDESC_CHAPCHRON_102;Our vassal [Root.GetName] has decided to seek independence. This will be bad for their health.;;;;;;;;;;;x
+EVTOPTA_CHAPCHRON_102;They will not succeed!;;;;;;;;;;;;;x
+EVTNAME_CHAPCHRON_103;Another Nationalist Uprising;;;;;;;;;;;;;x
+EVTDESC_CHAPCHRON_103;More peasants, this time in [Root.GetName] have risen up, hoping for independence. What a terrible idea.;;;;;;;;;;;x
+EVTOPTA_CHAPCHRON_103;Ready the troops!;;;;;;;;;;;;;x
+CHAPCHRON_CB_NAME_NATIONALIST_REVOLT;Liberation of [Title.GetBaseName];;;;;;;;;;;;;x
+CHAPCHRON_WAR_NAME_NATIONALIST_REVOLT;$ORDER$Liberation of [Title.GetBaseName];;;;;;;;;;;;;x
