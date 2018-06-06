@@ -199,13 +199,17 @@ character_event = {
 		year = 1420
 		NOT = {
 			has_character_flag = chapchron_c15_independence_rebellion
-			year = 1440
+			year = 1425
 		}
 		liege = {
 			has_landed_title = e_britannia
 			# No Chappingtons
 			NOT = {
 				dynasty = ROOT
+				reverse_opinion = {
+					who = ROOT
+					value = 40
+				}
 			}
 		}
 		tier = KING
@@ -221,7 +225,7 @@ character_event = {
 					target = PREV
 					casus_belli = bid_for_independence
 				}
-				opinion = {
+				reverse_opinion = {
 					who = PREV
 					modifier = opinion_evil_tyrant
 				}
